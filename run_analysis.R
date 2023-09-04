@@ -162,6 +162,13 @@ activity_subj_averages <- final_data %>%
       summarize(across(.fns = mean))%>%
       select(-Group)
 
+##produce .txt file of the second tidy dataset
+file_path <- "submission.txt"
+submission <- write.table(activity_subj_averages, 
+                          file = file_path, 
+                          sep = "\t", 
+                          row.names = FALSE)
+
 ## for documentation purposes, create a markdown list of variable names
 variable_names <- names(final_data)
 variable_list <- paste0("* ", variable_names)
